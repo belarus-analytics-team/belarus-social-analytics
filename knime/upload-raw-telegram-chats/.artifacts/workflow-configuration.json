@@ -1,0 +1,15 @@
+
+{
+    "knime.var.ACCESS_SECRET_KEY": {
+        "type": "string",
+        "default": "slCKE0f5dMn8MGpQRcEvljyRS4ewhFWjQ3hD5OSa"
+    },
+    "knime.var.ACCESS_KEY_ID": {
+        "type": "string",
+        "default": "AKIAUCPM44EJKTUPH3VI"
+    },
+    "knime.var.FALSE": {
+        "type": "string",
+        "default": "FALSE"
+    }
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<config key="multipleStatement_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="multipleStatement" type="xboolean" value="true"/>
+<config key="statementSeparator_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="statementSeparator" type="xstring" value=";"/>
+<config key="statement_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="statement" type="xstring" value="DROP TABLE IF EXISTS social_analytics.processed_telegram_messages_snapshots;%%00010%%00010CREATE TABLE social_analytics.processed_telegram_messages_snapshots%%00010WITH (%%00010     format = 'parquet', %%00010     external_location = 's3://belarus-analytics-data-lake/social_analytics/data/processed/telegram_messages_snapshots', %%00010     parquet_compression = 'SNAPPY',%%00010     bucketed_by = ARRAY['chat_id'],%%00010     bucket_count = 8)%%00010AS%%00010SELECT%%00010  MAX(&quot;chat_name&quot;) as &quot;chat_name&quot;,%%00010  MAX(&quot;chat_type&quot;) as &quot;chat_type&quot;,%%00010  MAX(&quot;chat_id&quot;) as &quot;chat_id&quot;,%%00010  &quot;uid&quot;,%%00010  MAX(&quot;local_id&quot;) as &quot;local_id&quot;,%%00010  MAX(&quot;type&quot;) as &quot;type&quot;,%%00010  MAX(&quot;date&quot;) as &quot;date&quot;,%%00010  MAX(&quot;actor&quot;) as &quot;actor&quot;,%%00010  MAX(&quot;actor_id&quot;) as &quot;actor_id&quot;,%%00010  MAX(&quot;action&quot;) as &quot;action&quot;,%%00010  MAX(&quot;title&quot;) as &quot;title&quot;,%%00010  MAX(&quot;raw_text&quot;) as &quot;raw_text&quot;,%%00010  MAX(&quot;text&quot;) as &quot;text&quot;,%%00010  MAX(coalesce(u.&quot;t2_from&quot;, &quot;from&quot;)) as &quot;from&quot;,%%00010  MAX(&quot;from_id&quot;) as &quot;raw_from_id&quot;,%%00010  MAX(coalesce(u.&quot;t2_from_id&quot;, &quot;from_id&quot;)) as &quot;from_id&quot;,%%00010  MAX(&quot;reply_to_message_uid&quot;) as &quot;reply_to_message_uid&quot;,%%00010  MAX(&quot;inviter&quot;) as &quot;inviter&quot;,%%00010--  MAX(&quot;members&quot;) as &quot;members&quot;,%%00010  MAX(&quot;photo&quot;) as &quot;photo&quot;,%%00010  MAX(&quot;width&quot;) as &quot;width&quot;,%%00010  MAX(&quot;height&quot;) as &quot;height&quot;,%%00010  MAX(&quot;file&quot;) as &quot;file&quot;,%%00010  MAX(&quot;thumbnail&quot;) as &quot;thumbnail&quot;,%%00010  MAX(&quot;media_type&quot;) as &quot;media_type&quot;,%%00010  MAX(&quot;sticker_emoji&quot;) as &quot;sticker_emoji&quot;,%%00010  MAX(&quot;edited&quot;) as &quot;edited&quot;,%%00010  MAX(&quot;forwarded_from&quot;) as &quot;forwarded_from&quot;,%%00010  MAX(&quot;via_bot&quot;) as &quot;via_bot&quot;,%%00010  MAX(&quot;mime_type&quot;) as &quot;mime_type&quot;,%%00010  MAX(&quot;duration_seconds&quot;) as &quot;duration_seconds&quot;,%%00010  MAX(&quot;location_information&quot;) as &quot;location_information&quot;,%%00010  MAX(&quot;message_id&quot;) as &quot;message_id&quot;,%%00010  MAX(&quot;poll&quot;) as &quot;poll&quot;,%%00010  MAX(&quot;performer&quot;) as &quot;performer&quot;,%%00010  MAX(&quot;poll_question&quot;) as &quot;poll_question&quot;,%%00010  MAX(&quot;poll_total_voters&quot;) as &quot;poll_total_voters&quot;,%%00010  MAX(&quot;saved_from&quot;) as &quot;saved_from&quot;,%%00010  MAX(&quot;author&quot;) as &quot;author&quot;,%%00010  MIN(&quot;dt&quot;) as &quot;dt&quot;,%%00010  COUNT(*) as &quot;records_merged&quot;%%00010FROM %%00010  &quot;social_analytics&quot;.&quot;stg_telegram_messages_snapshots&quot; m%%00010  LEFT JOIN &quot;social_analytics&quot;.&quot;stg_telegram_user_matches&quot; u on m.from_id = u.t1_from_id%%00010GROUP BY%%00010  &quot;uid&quot;%%00010"/>
+</config>
+<config key="nodeAnnotation">
+<entry key="text" type="xstring" value="Create%%00010processed_telegram_messages_snapshots"/>
+<entry key="bgcolor" type="xint" value="16777215"/>
+<entry key="x-coordinate" type="xint" value="740"/>
+<entry key="y-coordinate" type="xint" value="722"/>
+<entry key="width" type="xint" value="213"/>
+<entry key="height" type="xint" value="24"/>
+<entry key="alignment" type="xstring" value="CENTER"/>
+<entry key="borderSize" type="xint" value="0"/>
+<entry key="borderColor" type="xint" value="16777215"/>
+<entry key="defFontSize" type="xint" value="11"/>
+<entry key="annotation-version" type="xint" value="20151123"/>
+<config key="styles">
+<config key="style_0">
+<entry key="start" type="xint" value="0"/>
+<entry key="length" type="xint" value="44"/>
+<entry key="fontname" type="xstring" value="Arial"/>
+<entry key="fontstyle" type="xint" value="0"/>
+<entry key="fontsize" type="xint" value="11"/>
+<entry key="fgcolor" type="xint" value="0"/>
+</config>
+</config>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="IDLE"/>
+<config key="nodecontainer_message">
+<entry key="type" type="xstring" value="WARNING"/>
+<entry key="message" type="xstring" value="Database connection does not exist. Please reset the corresponding connector node."/>
+</config>
+<entry key="factory" type="xstring" value="org.knime.database.node.manipulation.executor.DBExecutorNodeFactory"/>
+<entry key="node-name" type="xstring" value="DB SQL Executor"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME database nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.database.nodes"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-bundle-version" type="xstring" value="4.2.0.v202006230916"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Database"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.database.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+<entry key="node-feature-version" type="xstring" value="4.2.1.v202008251536"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="DB SQL Executor"/>
+<entry key="hasContent" type="xboolean" value="false"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" isnull="true" value=""/>
+</config>
+</config>
